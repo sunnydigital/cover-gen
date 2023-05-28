@@ -4,6 +4,16 @@
 
 Repository for a simple Python-baed command line cover letter generator using a base docx template
 
+## Dependencies
+
+---
+
+This script requires three packages that are not automatically installed with `Python 3.9`, and as such please run `pip install` on:
+
+- `docx`
+- `docxtpl`
+- `docx2pdf`
+
 ## Usage
 
 ---
@@ -19,4 +29,4 @@ With specifications of the arguments as follows:
 4. `--folder` the name of the subfolder for the outputted `.pdf` or `.docx` file to be placed in
 5. `--pdf` whether or not to output a `.pdf` or `.docx` file
 
-In terms, this script takes a basic template and simply outputs a specific cover letter for each company, for the addressed date, for a given role 
+In simple terms, this script takes a basic template and simply outputs a specific cover letter for each company, for the addressed date, for a given role 
