@@ -19,7 +19,7 @@ This script requires three packages that are not automatically installed with `P
 ---
 
  - Change current directory to the location of the template (by default named `"Cover-Letter-Template.docx"`
- - Use `python cv-convert.py --company [COMPANY] --role [ROLE] --name [NAME] --template [TEMPLATE] --folder [FOLDER] --pdf [PDF]`
+ - Use `python cv-convert.py [--company] [COMPANY] [--role] [ROLE] [--name] [NAME] [--template] [TEMPLATE] [--folder] [FOLDER] [--pdf] [PDF]`
 
 With specifications of the arguments as follows:
 
@@ -29,4 +29,12 @@ With specifications of the arguments as follows:
 4. `--folder` the name of the subfolder for the outputted `.pdf` or `.docx` file to be placed in
 5. `--pdf` whether or not to output a `.pdf` or `.docx` file
 
-In simple terms, this script takes a basic template and simply outputs a specific cover letter for each company, for the addressed date, for a given role 
+### Template
+
+Within the template (a `.docx` document), the script effectively replaces all dates, roles, and companies with the given format:
+
+- role: `{{ROLE}}`
+- company: `{{COMAPNY}}`
+- date: `{{DATE}}`
+
+As such, in the Word `.docx` document, change each mention of a role, company, and date accordingly.
