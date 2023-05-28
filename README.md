@@ -12,8 +12,10 @@ This script requires three packages that are not automatically installed with `P
 
 ## Usage
 
- - Change current directory to the location of the template (by default named `"Cover-Letter-Template.docx"`
- - Use `python cv-convert.py [--company] [COMPANY] [--role] [ROLE] [--name] [NAME] [--template] [TEMPLATE] [--folder] [FOLDER] [--pdf] [PDF]`
+Download and place the script `cl-gen.py` file to the same location as the desired cover letter template `.docx` file
+
+ - Change current directory to the location of the template (by default named `"Cover-Letter-Template.docx"`)
+ - Use `python cv-convert.py [--company COMPANY] [--role ROLE] [--name NAME] [--template TEMPLATE] [--folder FOLDER] [--pdf PDF]`
 
 With specifications of the arguments as follows:
 
