@@ -1,12 +1,8 @@
 # Cover Letter Generator
 
----
-
 Repository for a simple Python-baed command line cover letter generator using a base `.docx` template
 
 ## Dependencies
-
----
 
 This script requires three packages that are not automatically installed with `Python 3.9`, and as such please run `pip install` on:
 
@@ -15,8 +11,6 @@ This script requires three packages that are not automatically installed with `P
 - `docx2pdf`
 
 ## Usage
-
----
 
  - Change current directory to the location of the template (by default named `"Cover-Letter-Template.docx"`
  - Use `python cv-convert.py [--company] [COMPANY] [--role] [ROLE] [--name] [NAME] [--template] [TEMPLATE] [--folder] [FOLDER] [--pdf] [PDF]`
