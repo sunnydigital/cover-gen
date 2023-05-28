@@ -1,6 +1,6 @@
-# Cover Letter Generator
+# Command Line Interface Cover Letter Generator
 
-Repository for a simple Python-based command line cover letter generator script using a user-provided `.docx` template
+Repository for a simple Python-based command line cover letter generator script using a user-provided `.docx` template running on CLI
 
 ## Dependencies
 
