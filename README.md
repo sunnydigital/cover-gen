@@ -34,3 +34,11 @@ Within the template (a `.docx` document), the script effectively replaces all da
 - date: `{{DATE}}`
 
 As such, in the Word `.docx` document, change each mention of a role, company, and date accordingly.
+
+## Future Features
+
+At the moment, attempting to implement two features and one potential API integration:
+
+1. The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles
+2. The generation of cover letters for a `{{EVENT}}` flag, indicating an event attended by the user
+3. The integration of Open AI GPT API to customize sections of cover letters
