@@ -39,6 +39,6 @@ As such, in the Word `.docx` document, change each mention of a role, company, a
 
 At the moment, attempting to implement two features and one potential API integration:
 
->>The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles
->>The generation of cover letters for a `{{EVENT}}` flag, indicating an event attended by the user
->>The integration of Open AI GPT API to customize sections of cover letters
+&nbsp;&nbsp;&nbsp;&nbsp;&nbspThe generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles
+&nbsp;&nbsp;&nbsp;&nbsp;&nbspThe generation of cover letters for a `{{EVENT}}` flag, indicating an event attended by the user
+&nbsp;&nbsp;&nbsp;&nbsp;&nbspThe integration of Open AI GPT API to customize sections of cover letters
