@@ -39,7 +39,7 @@ As such, in the Word `.docx` document, change each mention of a role, company, a
 
 At the moment, attempting to implement two features and one potential API integration:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles
+* The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The generation of cover letters for a `{{EVENT}}` flag, indicating an event attended by the user
 
