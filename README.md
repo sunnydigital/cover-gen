@@ -14,10 +14,22 @@ This script requires three packages that are not automatically installed with `P
 
 ## Usage
 
+Install all dependencies (all four) through the provided `requirements.txt` using
+
+```Python
+!pip install -r requirements.txt
+```
+
+in any `Python` or `Jupyter` file, or
+
+```unix
+python pip install -r requirements.txt
+```
+
 Download and place the script `cl-gen.py` file to the same location as the desired cover letter template `.docx` file
 
- - Change current directory to the location of the template (by default named `"Cover-Letter-Template.docx"`)
- - Use `python cv-convert.py [--company COMPANY] [--role ROLE] [--name NAME] [--template TEMPLATE] [--folder FOLDER] [--pdf PDF]`
+ - Change current directory to the location of the template (by default named `"cover-letter-template.docx"`)
+ - Use `python cover-gen.py [--company COMPANY] [--role ROLE] [--name NAME] [--template TEMPLATE] [--folder FOLDER] [--pdf PDF]`
 
 With specifications of the arguments as follows:
 
