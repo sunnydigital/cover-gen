@@ -4,6 +4,11 @@ Repository for a simple Python-based command line cover letter generator using a
 
 <img src="https://github.com/sunnydigital/cover-gen/blob/main/assets/demo_console_img.png" alt="Command Line Example" width="100%">
 
+## Version Updates
+
+Version 1.0.0 introduced a basic CLI I/O for generating single cover letters from a set list of parameters
+Version 2.0.0 allowed for added contexts to generated `.docx` documents (a specific event or "other" item) and more importantly, the feature for batch generation of cover letters through a `.csv` or `.xlsx` file
+
 ## Dependencies
 
 Install all dependencies (all four) through the provided `requirements.txt` using
