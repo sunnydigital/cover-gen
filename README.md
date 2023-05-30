@@ -86,5 +86,6 @@ At the moment, attempting to implement two features and one potential API integr
 - [x] The generation of cover letters for an `{{EVENT}}` flag, indicating any events attended by the user
 - [x] The generation of cover letters for an `{{OTHER}}` flag, indicating other, wildcard options the user would like to fill
 - [ ] The generation of cover letters with individual hiring manager names
+- [ ] The generation of cover letters with individual company addresses
 - [ ] The generation of cover letters with dates other than the day the script was run
 - [ ] The integration of Open AI GPT API to customize sections of cover letters
