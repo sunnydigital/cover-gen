@@ -6,14 +6,6 @@ Repository for a simple Python-based command line cover letter generator using a
 
 ## Dependencies
 
-This script requires three packages that are not automatically installed with `Python 3.9`, and as such please run `pip install` on:
-
-- `docx`
-- `docxtpl`
-- `docx2pdf`
-
-## Usage
-
 Install all dependencies (all four) through the provided `requirements.txt` using
 
 ```Python
@@ -25,6 +17,8 @@ in any `Python` or `Jupyter` file, or
 ```unix
 python pip install -r requirements.txt
 ```
+
+## Usage
 
 Download and place the script `cl-gen.py` file to the same location as the desired cover letter template `.docx` file
 
