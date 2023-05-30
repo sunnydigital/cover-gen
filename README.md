@@ -83,12 +83,16 @@ Good luck applying :)
 
 At the moment, attempting to implement two features and one potential API integration:
 
-- [ ] Automatically downloading dependencies - oops, no idea how to really work this HAHaHAhahaHaha... :( pssst for now, please just use the `requirements.txt` and maybe learn how to read?
-- [x] The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles
-- [x] The generation of cover letters for an `{{EVENT}}` flag, indicating any events attended by the user
-- [x] The generation of cover letters for an `{{OTHER}}` flag, indicating other, wildcard options the user would like to fill
-- [ ] The generation of cover letters with individual hiring manager names
-- [ ] The generation of cover letters with a met contact's name
-- [ ] The generation of cover letters with individual company addresses
-- [ ] The generation of cover letters with dates other than the day the script was run
-- [ ] The integration of Open AI GPT API to customize sections of cover letters
+- [ ] Automatically downloading dependencies - oops, no idea how to really work this HAHaHAhahaHaha... :( pssst for now, please just use the `requirements.txt`?
+- [x] The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles (v2.0.0)
+- [x] An `{{EVENT}}` flag, indicating any events attended by the user (v2.0.0)
+- [x] An `{{OTHER}}` flag, indicating other, wildcard options the user would like to fill (v2.0.0)
+- [x] A `{{HMANAGER}}` flag, indicating references to specific hiring managers (v3.0.0)
+- [x] A `{{CONTACT}}` flag, indicatinga specific contact's name (v3.0.0)
+- [x] An `{{ADDRESS}}` flag, with individual company addresses (v3.0.0)
+- [x] A `{{DATE}}` flag, with specific dates that do not have to be today (v3.0.0)
+- [x] The addition of one more `{{OTHER}}` flag (v3.0.0)
+- [x] The addition of two `{{CONVO}}` flags, indicating interesting pieces of conversation to include in the cover letter (v3.0.0)
+- [ ] The integration of a feature to output the number of errors for each type (e.g. 3 address errors/4 date format errors)
+- [ ] The integration of a feature to output the companies/roles/applications associated with each error
+- [ ] The integration of Open AI Chat/GPT API to customize sections of cover letters
