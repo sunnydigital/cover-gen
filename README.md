@@ -1,6 +1,6 @@
 # Command Line Interface Cover Letter Generator
 
-Repository for a simple Python-based command line cover letter generator script using a user-provided `.docx` template running on CLI
+Repository for a simple Python-based command line cover letter generator using a user-provided `.docx` template running on CLI
 
 <img src="https://github.com/sunnydigital/cover-gen/blob/main/assets/demo_console_img.png" alt="Command Line Example" width="100%">
 
