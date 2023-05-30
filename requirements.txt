@@ -1,0 +1,5 @@
+########## Requirements ##########
+openpyxl
+docx2pdf
+docxtpl
+pandas

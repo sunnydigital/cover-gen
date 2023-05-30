@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 
+## Standard packages
 import os
 import sys
-import csv
 import errno
-import pandas as pd
-import importlib.util
-
-import random
 import datetime
 import argparse
 from pathlib import Path
 
+## Packages requiring installation
+import pandas as pd
 import openpyxl
 from docx2pdf import convert
 from docxtpl import DocxTemplate
