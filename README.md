@@ -17,7 +17,7 @@ This script requires three packages that are not automatically installed with `P
 Install all dependencies (all four) through the provided `requirements.txt` using
 
 ```Python
-pip install -r requirements.txt
+!pip install -r requirements.txt
 ```
 
 in any `Python` or `Jupyter` file, or
@@ -57,17 +57,19 @@ With arguments:
 
 1. `-name` the name of the user, you
 2. `--template` the name of the template to be modified (defaults to `cover-letter-template.docx`)
-3. `--app_list` a `.xlsx` or `.csv` file in the format of having columns of `role` and `company` and optional columns of `event` and `other` (as specified above)
+3. `--app_list` a `.xlsx` or `.csv` file in the format of having columns of `role` and `company`, with optional columns of `event` and `other` (as specified above)
 
 ### Template
 
-Within the template (a `.docx` document), the script effectively replaces all dates, roles, and companies with the given format:
+Within the template (a `.docx` document), the script effectively replaces all dates, companies, roles, events, and "other" item found with the given format change:
 
-- role: `{{ROLE}}`
-- company: `{{COMAPNY}}`
-- date: `{{DATE}}`
+- `{{DATE}}` -> `datetime.date` in the format `BB dd, YYYY` (e.g. May 28, 2023)
+- `{{COMAPNY}}` -> `--company` if a singular entry or the row number for a given `company`
+- `{{ROLE}}` -> `--role` if a singular entry or the row associated with a given `role`
+- `{{EVENT}}` -> `--event` if a singular entry or the row associated with a given `event`
+- `{{OTHER}}` -> `--other` if a singular entry or the row associated with a given `other`
 
-As such, in the Word `.docx` document, change each mention of a role, company, and date accordingly.
+As such, in the Word `.docx` document, change each mention of a date, company, role, event, and "other" item accordingly.
 
 ## Future Features
 
@@ -77,4 +79,5 @@ At the moment, attempting to implement two features and one potential API integr
 - [x] The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles
 - [x] The generation of cover letters for an `{{EVENT}}` flag, indicating any events attended by the user
 - [x] The generation of cover letters for an `{{OTHER}}` flag, indicating other, wildcard options the user would like to fill
+- [ ] The generation of cover letters with dates other than the day the script was run
 - [ ] The integration of Open AI GPT API to customize sections of cover letters
