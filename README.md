@@ -69,13 +69,25 @@ Within the template (a `.docx` document), the script effectively replaces all da
 - `{{EVENT}}` -> `--event` if a singular entry or the row associated with a given `event`
 - `{{OTHER}}` -> `--other` if a singular entry or the row associated with a given `other`
 
-As such, in the Word `.docx` document, change each mention of a date, company, role, event, and "other" item accordingly.
+As such, in the Word `.docx` document, change each mention of a date, company, role, event, and "other" item accordingly, please take a peek at the given sample cover letter `cover-letter-template.docx`, but an example would be "May 28, 2023" -> "{{DATE}}" in the `.docx` (Microsoft Word) document
+
+## Download and Implementation
+
+Simply either download the repository as a `.zip` file or clone it to GitHub Desktop, follow the installation instructions above, and to test change the directory to the folder and run the commands:
+
+```unix
+python cover-gen.py -name "First Last" --template cover-letter-template.docx --app_list test_file.csv
+```
+
+If this works, replace the template with your own cover letter and list of companies to apply to with your custom list as well and all should run smoothly
+
+Good luck applying :)
 
 ## Future Features
 
 At the moment, attempting to implement two features and one potential API integration:
 
-- [ ] Automatically downloading dependencies - oops, no idea how to really work this HAHAHahaaha... :( pssst for now, please just use the `requirements.txt` and maybe learn how to read?
+- [ ] Automatically downloading dependencies - oops, no idea how to really work this HAHaHAhahaHaha... :( pssst for now, please just use the `requirements.txt` and maybe learn how to read?
 - [x] The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles
 - [x] The generation of cover letters for an `{{EVENT}}` flag, indicating any events attended by the user
 - [x] The generation of cover letters for an `{{OTHER}}` flag, indicating other, wildcard options the user would like to fill
