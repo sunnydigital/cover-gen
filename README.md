@@ -42,4 +42,5 @@ At the moment, attempting to implement two features and one potential API integr
 - [ ] Automatically downloading dependencies - oops, no idea how to really work this HAHAHahaaha... :(
 - [x] The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles
 - [x] The generation of cover letters for an `{{EVENT}}` flag, indicating any events attended by the user
+- [x] The generation of cover letters for an `{{OTHER}}` flag, indicating other, wildcard options the user would like to fill
 - [ ] The integration of Open AI GPT API to customize sections of cover letters
