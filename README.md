@@ -18,6 +18,8 @@ in any `Python` or `Jupyter` file, or
 python pip install -r requirements.txt
 ```
 
+(Psst if you don't have Python installed, download it [here](https://www.python.org/downloads/) and might I recommend an editor, mine of choice is [Visual Studio Code](https://code.visualstudio.com/))
+
 ## Usage
 
 Download and place the script `cl-gen.py` file to the same location as the desired cover letter template `.docx` file
