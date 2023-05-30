@@ -63,7 +63,7 @@ Within the template (a `.docx` document), the script effectively replaces all da
 - `{{EVENT}}` -> `--event` if a singular entry or the row associated with a given `event`
 - `{{OTHER}}` -> `--other` if a singular entry or the row associated with a given `other`
 
-As such, in the Word `.docx` document, change each mention of a date, company, role, event, and "other" item accordingly, please take a peek at the given sample cover letter `cover-letter-template.docx`, but an example would be "May 28, 2023" -> "{{DATE}}" in the `.docx` (Microsoft Word) document
+As such, in the Word `.docx` document, change each mention of a date, company, role, event, and "other" item accordingly, please take a peek at the given sample cover letter `cover-letter-template.docx` (courtesy of ChatGPT), but an example would be "May 28, 2023" -> "{{DATE}}" in the `.docx` (Microsoft Word) document
 
 ## Download and Implementation
 
