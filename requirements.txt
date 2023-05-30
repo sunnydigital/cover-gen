@@ -3,3 +3,4 @@ openpyxl
 docx2pdf
 docxtpl
 pandas
+python-dateutil

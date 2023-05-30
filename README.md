@@ -4,11 +4,6 @@ Repository for a simple Python-based command line cover letter generator using a
 
 <img src="https://github.com/sunnydigital/cover-gen/blob/main/assets/demo_console_img.png" alt="Command Line Example" width="100%">
 
-## Version Updates
-
-Version 1.0.0 introduced a basic CLI I/O for generating single cover letters from a set list of parameters
-Version 2.0.0 allowed for added contexts to generated `.docx` documents (a specific event or "other" item) and more importantly, the feature for batch generation of cover letters through a `.csv` or `.xlsx` file
-
 ## Dependencies
 
 Install all dependencies (all four) through the provided `requirements.txt` using
@@ -89,9 +84,9 @@ Good luck applying :)
 At the moment, attempting to implement two features and one potential API integration:
 
 - [ ] Automatically downloading dependencies - oops, no idea how to really work this HAHaHAhahaHaha... :( pssst for now, please just use the `requirements.txt` and maybe learn how to read?
-- [x] The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles (v2.0.0)
-- [x] The generation of cover letters for an `{{EVENT}}` flag, indicating any events attended by the user (v2.0.0)
-- [x] The generation of cover letters for an `{{OTHER}}` flag, indicating other, wildcard options the user would like to fill (v2.0.0)
+- [x] The generation of multiple cover letters at once through reading in a `.xslx` or `.csv` file containing company and roles
+- [x] The generation of cover letters for an `{{EVENT}}` flag, indicating any events attended by the user
+- [x] The generation of cover letters for an `{{OTHER}}` flag, indicating other, wildcard options the user would like to fill
 - [ ] The generation of cover letters with individual hiring manager names
 - [ ] The generation of cover letters with a met contact's name
 - [ ] The generation of cover letters with individual company addresses
