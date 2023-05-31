@@ -63,13 +63,20 @@ With arguments:
 
 ### Template
 
-Within the template (a `.docx` document), the script effectively replaces all dates, companies, roles, events, and "other" item found with the given format change:
+Within the template (a `.docx` document), the script effectively replaces all dates, companies, roles, events, contacts, referrers, hiring managers, conversations and "other" items found with the given format change:
 
-- `{{DATE}}` -> `datetime.date` in the format `BB dd, YYYY` (e.g. May 28, 2023)
-- `{{COMAPNY}}` -> `--company` if a singular entry or the row number for a given `company`
-- `{{ROLE}}` -> `--role` if a singular entry or the row associated with a given `role`
-- `{{EVENT}}` -> `--event` if a singular entry or the row associated with a given `event`
-- `{{OTHER}}` -> `--other` if a singular entry or the row associated with a given `other`
+- `{{NAME}}` -> `--name` in the format of `First Last` name
+- `{{DATE}}` -> `--date` in a generally accepted date format (e.g. `BB dd, YYYY`; `May 28, 2023`) if a singular entry or the row number for a given `date` column if from a `.csv` or `.xlsx` or today's date (as provided by `datetime.date.today()`) if none provided
+- `{{COMPANY}}` -> `--company` if a singular entry or the row number for a given `company` column if from a `.csv` or `.xlsx`
+- `{{ADDRESS}}` -> `--address` if a singular entry or the row associated with a given `address` column if from a `.csv` or `.xlsx`
+    - This is separated by at least 2 commas, e.g. "1234 Meridian Lane, New York, NY 10004"
+- `{{ROLE}}` -> `--role` if a singular entry or the row associated with a given `role` column if from a `.csv` or `.xlsx`
+- `{{EVENT}}` -> `--event` if a singular entry or the row associated with a given `event` column if from a `.csv` or `.xlsx`
+- `{{CONTACT}}` -> `--contact` if a singular entry or the row associated with the given `contact` column if from a `.csv` or `.xlsx`
+- `{{REFERRAL}}` -->
+- `{{HMANAGER}}`
+- `{{CONVO1}}`/`{{CONVO2}}` -> `--convo1`/`--convo2`
+- `{{OTHER1}}`/`{{OTHER2}}` -> `--other1`/`--other2` if a singular entry or the row associated with a given `other`
 
 As such, in the Word `.docx` document, change each mention of a date, company, role, event, and "other" item accordingly, please take a peek at the given sample cover letter `cover-letter-template.docx` (courtesy of ChatGPT), but an example would be "May 28, 2023" -> "{{DATE}}" in the `.docx` (Microsoft Word) document
 
@@ -85,7 +92,7 @@ If this works, replace the template with your own cover letter and list of compa
 
 Good luck applying :)
 
-## Future Features
+## Future Updates
 
 At the moment, attempting to implement two features and one potential API integration:
 
@@ -102,3 +109,7 @@ At the moment, attempting to implement two features and one potential API integr
 - [ ] The integration of a feature to output the number of errors for each type (e.g. 3 address errors/4 date format errors)
 - [ ] The integration of a feature to output the companies/roles/applications associated with each error
 - [ ] The integration of Open AI Chat/GPT API to customize sections of cover letters
+
+## Shoutout and Thanks
+
+Thanks to [TextKool](https://www.textkool.com/en) for its [ASCII Art Generator](https://textkool.com/en/ascii-art-generator?hl=default&vl=default&font=ANSI%20Regular&text=cover-gen%0Av3.0.0)
