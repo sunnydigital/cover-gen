@@ -65,18 +65,18 @@ With arguments:
 
 Within the template (a `.docx` document), the script effectively replaces all dates, companies, roles, events, contacts, referrers, hiring managers, conversations and "other" items found with the given format change:
 
-- `{{NAME}}` -> `--name` in the format of `First Last` name
-- `{{DATE}}` -> `--date` in a generally accepted date format (e.g. `BB dd, YYYY`; `May 28, 2023`) if a singular entry or the row number for a given `date` column if from a `.csv` or `.xlsx` or today's date (as provided by `datetime.date.today()`) if none provided
-- `{{COMPANY}}` -> `--company` if a singular entry or the row number for a given `company` column if from a `.csv` or `.xlsx`
-- `{{ADDRESS}}` -> `--address` if a singular entry or the row associated with a given `address` column if from a `.csv` or `.xlsx`
+- `{{NAME}}` -> `--name` in the format of `First`, `Last` name
+- `{{DATE}}` -> `--date` in a generally accepted date format (e.g. `BB dd, YYYY`; `May 28, 2023`) if a singular entry or the row's value for a given `date` column if importing from a `.csv` or `.xlsx` or today's date (as provided by `datetime.date.today()`) if none provided
+- `{{COMPANY}}` -> `--company` if a singular entry or the row's value associated with the given `company` column if importing from a `.csv` or `.xlsx`
+- `{{ADDRESS}}` -> `--address` if a singular entry or the row's value associated with a given `address` column if importing from a `.csv` or `.xlsx`
     - This is separated by at least 2 commas, e.g. "1234 Meridian Lane, New York, NY 10004"
-- `{{ROLE}}` -> `--role` if a singular entry or the row associated with a given `role` column if from a `.csv` or `.xlsx`
-- `{{EVENT}}` -> `--event` if a singular entry or the row associated with a given `event` column if from a `.csv` or `.xlsx`
-- `{{CONTACT}}` -> `--contact` if a singular entry or the row associated with the given `contact` column if from a `.csv` or `.xlsx`
-- `{{REFERRAL}}` -->
-- `{{HMANAGER}}`
-- `{{CONVO1}}`/`{{CONVO2}}` -> `--convo1`/`--convo2`
-- `{{OTHER1}}`/`{{OTHER2}}` -> `--other1`/`--other2` if a singular entry or the row associated with a given `other`
+- `{{ROLE}}` -> `--role` if a singular entry or the row's value associated with a given `role` column if importing from a `.csv` or `.xlsx`
+- `{{EVENT}}` -> `--event` if a singular entry or the row's value associated with a given `event` column if importing from a `.csv` or `.xlsx`
+- `{{CONTACT}}` -> `--contact` if a singular entry or the row's value associated with the given `contact` column if importing from a `.csv` or `.xlsx`
+- `{{REFERRAL}}` -> `--referral` if a singular entry or the row's value associated with the given `referral` column if importing from a `.csv` or `.xlsx`
+- `{{HMANAGER}}` -> `--hmanager` if a singular entry or the row's value associated with the given `hiring manager` column if importing from a `.csv` or `.xlsx`
+- `{{CONVO1}}`/`{{CONVO2}}` -> `--convo1`/`--convo2` if a singular entry or the row's value associated with a given `first`/`second conversation` column if importing from a `.csv` or `.xlsx`
+- `{{OTHER1}}`/`{{OTHER2}}` -> `--other1`/`--other2` if a singular entry or the row associated with a given `first`/`second other` column if importing from a `.csv` or `.xlsx`
 
 As such, in the Word `.docx` document, change each mention of a date, company, role, event, and "other" item accordingly, please take a peek at the given sample cover letter `cover-letter-template.docx` (courtesy of ChatGPT), but an example would be "May 28, 2023" -> "{{DATE}}" in the `.docx` (Microsoft Word) document
 
