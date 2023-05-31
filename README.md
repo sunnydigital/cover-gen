@@ -18,7 +18,7 @@ in any `Python` or `Jupyter` file, or
 python pip install -r requirements.txt
 ```
 
-A working version of Microsoft Word will also be required (now offered through the Microsoft Office suite of apps, which can be downloadere [here](https://www.microsoft.com/en-us/download/office))
+A working version of Microsoft Word will also be required (now offered through the Microsoft Office suite of apps, which can be downloaded [here](https://www.microsoft.com/en-us/download/office))
 
 (Psst if you don't have Python installed, download it [here](https://www.python.org/downloads/) and might I recommend an editor, mine of choice is [Visual Studio Code](https://code.visualstudio.com/))
 
