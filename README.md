@@ -35,13 +35,19 @@ For generating a single application (e.g. a single role for a single comapny)
 With arguments:
 
 1. `-name` the name of the user, you
-2. `--company` the name of the company applying for
-3. `--role` the role applying for
-4. `--event` (Optional) event to mention in the application, e.g. networking event, company social
-5. `--other` (Optional) other information as found pertinent to the application
-6. `--template` the name of the template to be modified (defaults to `cover-letter-template.docx`)
-7. `--folder` Whether or not for the outputted `.pdf` or `.docx` file to be placed in a subfolder with the name of the associated company
-8. `--pdf` whether or not to output a `.pdf` or `.docx` file
+2. `--date` the date of the application, if different from today
+3. `--company` the name of the company applying for
+4. `--address` the address of the company you are applying for
+5. `--role` the role applying for
+6. `--event` event to mention in the application, e.g. networking event, company social
+7. `--contact` the name of a contact within the comapny or otherwise
+8. `--referral` the name of the person referring the user, you, to the company
+9. `--hmanager` the name of the hiring manager (if known)
+10. `--convo1`/`--convo2` the contexts for conversations applicable to the application
+11. `--other1`/`--other2` other information as found pertinent to the application
+12. `--template` the name of the template to be modified (defaults to `cover-letter-template.docx`)
+13. `--folder` Whether or not for the outputted `.pdf` or `.docx` file to be placed in a subfolder with the name of the associated company
+14. `--pdf` whether or not to output a `.pdf` or `.docx` file
 
 ### Multi Application Generation
 
