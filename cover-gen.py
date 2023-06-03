@@ -10,6 +10,7 @@ ASCII art font: ANSI Regular
 '''
 
 ## Standard packages
+import re
 import os
 import sys
 import errno
@@ -105,7 +106,7 @@ def get_date(use_today, *app):
   
     def parse_date(date_str):
         '''
-        General function to take inputted date, determine whether valid datetime format, and throws exception otherwise
+        General function to take entered date, determine whether valid datetime format, and throws exception otherwise
             @param date_str: the date string to be evaluated
             @return: datetime.date object of the parsed input string with 
         '''
@@ -139,7 +140,7 @@ def get_date(use_today, *app):
         try:
             date = parse_date(app[0][rm['date']])
         except:
-            rm_date = rm['date'] ## Not sure what version of Python allows f-strings to have so little utility but this isn't it chief
+            rm_date = rm['date'] ## Not sure what version of Python allows f-strings to have so little utility but this ain't chief
             date = today
             errors['date'] += 1
             print('='*74)
@@ -159,8 +160,8 @@ def get_address(*app):
     
     def parse_address(address_str):
         '''
-        General function to take inputted address, determine whether valid, and output address in valid format
-        The function throws an error if the address string cannot be parsed
+        General function to take entered address, determine whether valid, and output address in valid format
+        The function excepts an error if the address string cannot be parsed
             @param address_str: The string of an address to be evaluated
             @return: Correct string format if no error, else blank string
         '''
@@ -286,7 +287,28 @@ def get_df_hash(df, ret_idx=True):
     return df_hash
 
 def get_union_list(df):
-    df_cols = set(df.columns)
+    '''
+    Function to return all available columns to be used in processing, and throws error if "company" or "role" doesn't exist in the columns
+        Does so by first converting all the column names to lowercase and then for each potentially different spelling of:
+            "Hiring Manager", 
+            "Conversation 1"/"Conversation 2"
+            "Other 1"/"Other 2"
+        @param df: A pandas.DataFrame object representing the ".xlsx" or ".csv" for a given applicaiton tracker
+        @return: a list of unions between columns acceptable by this script and columns entered by the user
+    '''
+    
+    df_cols = df.columns.str.lower()
+    
+    ## Changes phonetically correct spelling of "Hiring Manager" to "hmanager":
+    df_cols = [re.sub('hiring manager', 'hmanager', col) for col in df_cols]
+    
+    ## Changes implementation of "Conversation 1" to "convo1" and the like
+    df_cols = [re.sub('conversation (\d+)', r'convo\1', col) for col in df_cols]
+    
+    ## Changes Implementation of "Other 1" to "other1" and the like
+    df_cols = [re.sub('other (\d+)', r'convo\1', col) for col in df_cols]
+    
+    df_cols = set(df_cols)
     
     union_list = list(allowed_cols.union(df_cols))
 
@@ -297,8 +319,8 @@ def get_union_list(df):
 
 def render_cl(*app):
     '''
-    Main function to create DoxcTemplate object, programatically determining for singular or multiple cover letters to be generated, creating a template based on contexts given, 
-    and calling necessary function to save generated cover letter
+    Main function to create DocxTemplate object, programatically determining for singular or multiple cover letters to be generated, creating a template based on contexts given, 
+        and calling necessary function to save generated cover letter
         @param *app: *args row of applications in order of "company", "role", "event"
     '''
     try:
@@ -374,7 +396,7 @@ if __name__ == '__main__':
     print_logo()
  
     if (args.role == None or args.company == None) and args.app_list == None:
-        raise argparse.ArgumentTypeError('Must enter either both company and role or a ".csv"/".xlsx" file containing a list of companies and roles (row indexed)')
+        raise argparse.ArgumentTypeError('Must enter either both "company" and "role" or a ".csv"/".xlsx" file containing a list of "companies" and "roles" (row indexed)')
     
     count_gen = 0
     global errors
@@ -382,10 +404,8 @@ if __name__ == '__main__':
         global app_list
         try:
             app_df = pd.read_csv(args.app_list)
-            app_df.columns = app_df.columns.str.lower()
         except Exception:
             app_df = pd.read_excel(args.app_list)
-            app_df.columns = app_df.columns.str.lower()
         except:
             print('No ".xlsx" or ".csv" file found at entered file location')
 
