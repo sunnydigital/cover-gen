@@ -6,7 +6,7 @@
     
 @about: Python based CLI script to automate cover letters in job applications
 @license: MIT License
-ASCII art font: ANSI Regular
+ASCII art font: ANSI Regular from TextKool
 '''
 
 ## Standard packages
@@ -379,12 +379,12 @@ def print_logo():
  ██████  ██████    ████   ███████ ██   ██        ██████  ███████ ██   ████ 
                                                                            
                                                                            
-██    ██ ██████      ██████      ██████                                    
-██    ██      ██    ██  ████    ██  ████                                   
-██    ██  █████     ██ ██ ██    ██ ██ ██                                   
- ██  ██       ██    ████  ██    ████  ██                                   
-  ████   ██████  ██  ██████  ██  ██████                                    
-                                                                            ''')
+██    ██ ██████     ██████      ██████                                     
+██    ██      ██         ██    ██  ████                                    
+██    ██  █████      █████     ██ ██ ██                                    
+ ██  ██       ██    ██         ████  ██                                    
+  ████   ██████  ██ ███████ ██  ██████                                     
+                                                                            ''')
     print('='*74)
 
 if __name__ == '__main__':
