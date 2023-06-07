@@ -297,6 +297,7 @@ def get_union_list(df):
         @return: a list of unions between columns acceptable by this script and columns entered by the user
     '''
     
+    ## Changes all columns to lower case
     df_cols = df.columns.str.lower()
     
     ## Changes phonetically correct spelling of "Hiring Manager" to "hmanager":
@@ -306,8 +307,8 @@ def get_union_list(df):
     df_cols = [re.sub('conversation (\d+)', r'convo\1', col) for col in df_cols]
     
     ## Changes Implementation of "Other 1" to "other1" and the like
-    df_cols = [re.sub('other (\d+)', r'convo\1', col) for col in df_cols]
-    
+    df_cols = [re.sub('other (\d+)', r'convo\1', col) for col in df_cols]    
+
     df_cols = set(df_cols)
     
     union_list = list(allowed_cols.union(df_cols))
@@ -382,14 +383,14 @@ def print_logo():
 ██    ██ ██████     ██████      ██████                                     
 ██    ██      ██         ██    ██  ████                                    
 ██    ██  █████      █████     ██ ██ ██                                    
- ██  ██       ██    ██         ████  ██                                    
-  ████   ██████  ██ ███████ ██  ██████                                     
-                                                                            ''')
+ ██  ██       ██         ██    ████  ██                                    
+  ████   ██████  ██ ██████  ██  ██████                                     
+                                                                            ''')
     print('='*74)
 
 if __name__ == '__main__':
 
-    allowed_cols = set(['name', 'date', 'company', 'address', 'role', 'event', 'contact', 'referral', 'hmanager', 'convo1', 'convo2', 'other1', 'other2'])
+    allowed_cols = set(['name', 'date', 'company', 'address', 'role', 'applied', 'event', 'contact', 'referral', 'hmanager', 'convo1', 'convo2', 'other1', 'other2'])
     
     args = parse_args()
     
@@ -420,7 +421,19 @@ if __name__ == '__main__':
         for item in union_list:
             errors[item] = 0
 
+        ## Replaces all instances of potential words indicating the user to have applied with "yes" and the user 
+        ## not having applied with the blank entry ""
+        if 'applied' in union_list:
+            app_df['union_list'].replace({r'([Aa]pplied)|([Ss]ent)|(Yes)|[Xx]': 'yes',
+                                          r'([Nn]ot [Aa]pplied)|([Nn]ot [Ss]ent)|([Nn]o)': ''}, 
+                                          regex=True, 
+                                          inplace=True
+            )
+
         for app in app_df[union_list].to_numpy():
+            if 'applied' in union_list and app[rm['applied']] == 'yes': # Continues the loop based on whether or not applied already and whether the applied column exists
+                continue
+
             render_cl(app)
             count_gen += 1
     
