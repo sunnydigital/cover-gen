@@ -311,7 +311,7 @@ def get_union_list(df):
 
     df_cols = set(df_cols)
     
-    union_list = list(allowed_cols.union(df_cols))
+    union_list = list(allowed_cols.intersection(df_cols))
 
     if 'company' not in union_list or 'role' not in union_list:
         raise ValueError('In input ".xlsx" or ".csv" file a company and role column must exist')
@@ -426,7 +426,7 @@ if __name__ == '__main__':
         if 'applied' in union_list:
             app_df['applied'].replace({r'([Aa]pplied)|([Ss]ent)|(Yes)|[Xx]': 'yes',
                                           r'([Nn]ot [Aa]pplied)|([Nn]ot [Ss]ent)|([Nn]o)': ''}, 
-                                          regex=True, 
+                                          regex=True,
                                           inplace=True
             )
 
