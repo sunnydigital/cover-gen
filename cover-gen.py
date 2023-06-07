@@ -424,7 +424,7 @@ if __name__ == '__main__':
         ## Replaces all instances of potential words indicating the user to have applied with "yes" and the user 
         ## not having applied with the blank entry ""
         if 'applied' in union_list:
-            app_df['union_list'].replace({r'([Aa]pplied)|([Ss]ent)|(Yes)|[Xx]': 'yes',
+            app_df['applied'].replace({r'([Aa]pplied)|([Ss]ent)|(Yes)|[Xx]': 'yes',
                                           r'([Nn]ot [Aa]pplied)|([Nn]ot [Ss]ent)|([Nn]o)': ''}, 
                                           regex=True, 
                                           inplace=True
