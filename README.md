@@ -107,6 +107,7 @@ At the moment, attempting to implement two features and one potential API integr
 - [x] A `{{DATE}}` flag, with specific dates that do not have to be today (v3.0.0)
 - [x] The addition of one more `{{OTHER}}` flag (v3.0.0)
 - [x] The addition of two `{{CONVO}}` flags, indicating interesting pieces of conversation to include in the cover letter (v3.0.0)
+- [x] The addition of a way to not apply to duplicate jobs using the `applied` column
 - [ ] The integration of a feature to output the number of errors for each type (e.g. `3 address errors`/`4 date format errors`)
 - [ ] The integration of a feature to output the companies/roles/applications associated with each error (e.g. `Company: Apple, Errors: [Role 1], [Role 2]; Company: Samsung, Errors: [Role 3], [Role 4]`
 - [ ] The integration of Open AI Chat/GPT API to customize sections of cover letters (specifically replacing a `{{GPT}}` token with what the model thinks is an ppropriate addition to the cover letter
