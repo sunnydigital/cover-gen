@@ -94,7 +94,7 @@ If this works, replace the template with your own cover letter and list of compa
 
 Good luck applying :)
 
-## Future Updates
+## Future Updates/Update Log
 
 At the moment, attempting to implement two features and one potential API integration:
 
@@ -112,10 +112,12 @@ At the moment, attempting to implement two features and one potential API integr
 - [ ] The integration of a feature to output the companies/roles/applications associated with each error (e.g. `Company: Apple, Errors: [Role 1], [Role 2]; Company: Samsung, Errors: [Role 3], [Role 4]`
 - [ ] The integration of Open AI Chat/GPT API to customize sections of cover letters (specifically replacing a `{{GPT}}` token with what the model thinks is an ppropriate addition to the cover letter
 
-## Shoutout and Thanks
+## Acknowledgements and Thanks
 
 Thanks to:
 
 [TextKool](https://www.textkool.com/en) for its [ASCII Art Generator](https://textkool.com/en/ascii-art-generator?hl=default&vl=default&font=ANSI%20Regular&text=cover-gen%0Av3.0.0)
 
 [ChatGPT](https://chat.openai.com/) for providing the foundation for a cover letter template (found [here](https://github.com/sunnydigital/cover-gen/blob/main/cover-letter-template.docx)), and assistance with two functions within the general code, namely [`parse_address`](https://github.com/sunnydigital/cover-gen/blob/main/cover-gen.py#L160) and [`parse_date`](https://github.com/sunnydigital/cover-gen/blob/main/cover-gen.py#L106), providing novel solutions covering generalities that frankly, I had no idea how to even begin tackling
+
+[RegEx101](https://regex101.com/) for providing quick and easy debugging for RegEx
