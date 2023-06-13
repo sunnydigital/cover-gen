@@ -429,9 +429,10 @@ if __name__ == '__main__':
                                           regex=True,
                                           inplace=True
             )
+        ## Above code might be deprecated, but is not in conflict at the moment, so will be left in
 
         for app in app_df[union_list].to_numpy():
-            if 'applied' in union_list and app[rm['applied']] == 'yes': # Continues the loop based on whether or not applied already and whether the applied column exists
+            if 'applied' in union_list and app[rm['applied']] != '': # Skips current row based on whether or not the "applied" column exists and whether or not already applied
                 continue
 
             render_cl(app)
