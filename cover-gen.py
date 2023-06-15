@@ -16,6 +16,7 @@ import sys
 import errno
 import datetime
 import argparse
+import numpy as np
 from pathlib import Path
 from collections import defaultdict
 
@@ -282,11 +283,11 @@ def get_df_hash(df, ret_idx=True):
             ret_idx=False: [list idx] -> [col value]
         @return: dictionary with return values
     '''
-    df_hash = {idx: value for idx, value in enumerate(union_list)} if not ret_idx else \
-        {value: idx for idx, value in enumerate(union_list)}
+    df_hash = {idx: value for idx, value in enumerate(intersection_list)} if not ret_idx else \
+        {value: idx for idx, value in enumerate(intersection_list)}
     return df_hash
 
-def get_union_list(df):
+def get_intersection_list(df):
     '''
     Function to return all available columns to be used in processing, and throws error if "company" or "role" doesn't exist in the columns
         Does so by first converting all the column names to lowercase and then for each potentially different spelling of:
@@ -309,14 +310,20 @@ def get_union_list(df):
     ## Changes Implementation of "Other 1" to "other1" and the like
     df_cols = [re.sub('other (\d+)', r'convo\1', col) for col in df_cols]    
 
-    df_cols = set(df_cols)
-    
-    union_list = list(allowed_cols.intersection(df_cols))
+    ## Changes Implementation of "Data Applied" to "date"
+    df_cols = [re.sub(r'[(date applied)|(application date)|(applied date)]', 'date', col) for col in df_cols]
 
-    if 'company' not in union_list or 'role' not in union_list:
+    ## Changes Implementation of a generalization of "Recruitment Company" to "recruitment company"
+    df_cols = [re.sub(r'[(recruiter)|(recruiting)|(headhunting)|(headhunter) company]', 'recruitment company', col) for col in df_cols]
+
+    df_set = set(df_cols)
+    
+    intersection_list = list(allowed_cols.intersection(df_set))
+
+    if 'company' not in intersection_list or 'role' not in intersection_list:
         raise ValueError('In input ".xlsx" or ".csv" file a company and role column must exist')
     
-    return union_list
+    return intersection_list, df_cols
 
 def render_cl(*app):
     '''
@@ -353,18 +360,18 @@ def render_cl(*app):
         
     else:
         context = {
-            'DATE': get_date(True, app[0]) if 'date' in union_list else get_date(False),
-            'COMPANY': app[0][rm['company']] if 'company' in union_list else None,
-            'ADDRESS': get_address(app[0]) if 'address' in union_list else None,
-            'ROLE': app[0][rm['role']] if 'role' in union_list else None,
-            'EVENT': app[0][rm['event']] if 'event' in union_list else None,
-            'CONTACT': app[0][rm['contact']] if 'contact' in union_list else None,
-            'REFERRAL': app[0][rm['referral']] if 'referral' in union_list else None,
-            'HMANAGER': 'Dear' + app[0][rm['hmanager']] if 'hmanager' in union_list else 'To Whom it May Concern,',
-            'CONVO1': app[0][rm['convo1']] if 'convo1' in union_list else None,
-            'CONVO2': app[0][rm['convo2']] if 'convo2' in union_list else None,
-            'OTHER1': app[0][rm['other1']] if 'other1' in union_list else None,
-            'OTHER2': app[0][rm['other2']] if 'other2' in union_list else None,
+            'DATE': get_date(True, app[0]) if 'date' in intersection_list else get_date(False),
+            'COMPANY': app[0][rm['company']] if 'company' in intersection_list else None,
+            'ADDRESS': get_address(app[0]) if 'address' in intersection_list else None,
+            'ROLE': app[0][rm['role']] if 'role' in intersection_list else None,
+            'EVENT': app[0][rm['event']] if 'event' in intersection_list else None,
+            'CONTACT': app[0][rm['contact']] if 'contact' in intersection_list else None,
+            'REFERRAL': app[0][rm['referral']] if 'referral' in intersection_list else None,
+            'HMANAGER': 'Dear' + app[0][rm['hmanager']] if 'hmanager' in intersection_list else 'To Whom it May Concern,',
+            'CONVO1': app[0][rm['convo1']] if 'convo1' in intersection_list else None,
+            'CONVO2': app[0][rm['convo2']] if 'convo2' in intersection_list else None,
+            'OTHER1': app[0][rm['other1']] if 'other1' in intersection_list else None,
+            'OTHER2': app[0][rm['other2']] if 'other2' in intersection_list else None,
         }
         
         template.render(context)
@@ -390,7 +397,7 @@ def print_logo():
 
 if __name__ == '__main__':
 
-    allowed_cols = set(['name', 'date', 'company', 'address', 'role', 'applied', 'event', 'contact', 'referral', 'hmanager', 'convo1', 'convo2', 'other1', 'other2'])
+    allowed_cols = set(['name', 'recruitment company', 'date', 'company', 'address', 'role', 'applied', 'event', 'contact', 'referral', 'hmanager', 'convo1', 'convo2', 'other1', 'other2'])
     
     args = parse_args()
     
@@ -410,29 +417,36 @@ if __name__ == '__main__':
         except:
             print('No ".xlsx" or ".csv" file found at entered file location')
 
-        global union_list ## Is this needed??
-        union_list = get_union_list(app_df)
-        
+        app_df.fillna('', inplace=True)
+
+        global intersection_list ## Is this needed??
+        intersection_list, df_cols = get_intersection_list(app_df)
+        app_df.columns = df_cols
+
         global rm ## And this??
         rm = get_df_hash(app_df)
 
+        ## Still need to hash original names of columns with changed names of columns
+
         errors = defaultdict(lambda: 'N/A')
         
-        for item in union_list:
+        for item in intersection_list:
             errors[item] = 0
 
         ## Replaces all instances of potential words indicating the user to have applied with "yes" and the user 
         ## not having applied with the blank entry ""
-        if 'applied' in union_list:
+        '''if 'applied' in intersection_list:
             app_df['applied'].replace({r'([Aa]pplied)|([Ss]ent)|(Yes)|[Xx]': 'yes',
                                           r'([Nn]ot [Aa]pplied)|([Nn]ot [Ss]ent)|([Nn]o)': ''}, 
                                           regex=True,
                                           inplace=True
-            )
-        ## Above code might be deprecated, but is not in conflict at the moment, so will be left in
+            )'''
 
-        for app in app_df[union_list].to_numpy():
-            if 'applied' in union_list and app[rm['applied']] != '': # Skips current row based on whether or not the "applied" column exists and whether or not already applied
+        for app in app_df[intersection_list].to_numpy():
+            if 'applied' in intersection_list and app[rm['applied']] != 'yes': # Continues the loop (skipping current row) based on whether or not applied already and whether the applied column exists
+                continue
+
+            if (app[rm['company']] == '' and app[rm['recruitment company']] != '') or app[rm['role']] == '':
                 continue
 
             render_cl(app)
