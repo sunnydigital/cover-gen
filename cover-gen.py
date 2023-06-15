@@ -311,10 +311,10 @@ def get_intersection_list(df):
     df_cols = [re.sub('other (\d+)', r'convo\1', col) for col in df_cols]    
 
     ## Changes Implementation of "Data Applied" to "date"
-    df_cols = [re.sub(r'[(date applied)|(application date)|(applied date)]', 'date', col) for col in df_cols]
+    df_cols = [re.sub(r'(date applied|application date|applied date|date of application)', 'date', col) for col in df_cols]
 
     ## Changes Implementation of a generalization of "Recruitment Company" to "recruitment company"
-    df_cols = [re.sub(r'[(recruiter)|(recruiting)|(headhunting)|(headhunter) company]', 'recruitment company', col) for col in df_cols]
+    df_cols = [re.sub(r'(recruiting|recruitment|headhunter) company', 'recruitment company', col) for col in df_cols]
 
     df_set = set(df_cols)
     
